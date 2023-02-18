@@ -1,0 +1,141 @@
+@import "variables";
+.containerbox {
+  background-image: url('./../../../../public/images/17545.jpg');
+  background-size: cover;
+  background-position: inherit;
+  overflow: hidden;
+  width: 100%;
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // overflow: hidden;
+
+  .accountbox {
+    width: 390px;
+    min-height: 640px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(15, 15, 15, 0.28);
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+
+    .topcontainer {
+      width: 100%;
+      height: 300px;
+      display: flex;
+      justify-content:center;
+      flex-direction: column;
+      padding: 0 1.8em;
+      padding-bottom: 3em;
+
+      .logintitle {
+        z-index: 10;
+        font-family: $poppins;
+        color: $light;
+        font-size: 38px;
+        font-weight: 500;
+        line-height: 36px;
+       
+      }
+      .subtitle{
+        z-index: 10;
+        color: $light;
+        font-size: 16px;
+        line-height: 38px;
+        font-family: $poppins;
+      }
+
+      .dropcolor {
+        width: 220%;
+        height: 150%;
+        z-index: 5;
+        position: absolute;
+        display: flex;
+        transform: rotate(18deg);
+        transition: cubic-bezier(0, 0, 0.2, 1) 1s top;
+        flex-direction: column;
+        border-radius: 50% 0 50% 0;
+        background: linear-gradient(
+          262deg,
+          rgba(20, 210, 255, 1) 0%,
+          rgba(49, 126, 182, 1) 43%,
+          rgba(13, 110, 253, 1) 100%
+        );
+        top: -45em;
+        right: -10.5em;
+      }
+    }
+    .login-form{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .form-group1{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        .inputstyle{
+          font-family: $poppins;
+          font-size: 18px;
+          border-radius: 10px 10px 0px 0px;
+          // box-shadow: 0 0 10px rgba(15, 15, 15, 0.28);
+          // border-color: transparent;
+          line-height: 30px;
+          &:focus{
+            overflow: visible;
+          }
+        
+        }
+      }
+      .form-group2{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .inputstyle{
+          font-family: $poppins;
+          font-size: 18px;
+          border-radius: 0px 0px 10px 10px;
+          // box-shadow: 0 0 10px rgba(15, 15, 15, 0.28);
+          // border-color: transparent;
+          line-height: 30px;
+        
+        }
+        .btn-show{
+          position: absolute;
+          right: 80px;
+          color: $dark;
+        }
+      }
+      .createaccount {
+        width: 100%;
+       padding: 15px 70px;
+        display: flex;
+        align-self: flex-start;
+        justify-content: center;
+       & >p,a{
+          font-family: $poppins;
+          font-size: 15px;
+         text-decoration: none;
+       }
+       
+      }
+      .submitbtn{
+        background-color: rgb(24 115 232);
+        color: $light;
+        padding: 10px 17px;
+        position: relative;
+        top: 20px;
+        transition: linear 0.15s padding;
+        &:hover{
+          box-shadow: 0 0 10px rgba(15, 15, 15, 92%);
+          padding: 10px 40px;
+        }
+      }
+    }
+  }
+}

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { getMovies } from "../services/fakeMovieService";
-import Pagination from "./pagination";
-import Paginate from "../common/paginate";
-import ListGroup from "./../common/listGroup";
-import { getGenres } from "../services/fakeGenreService";
-import TableMovies from "./tableMovies";
+import { getMovies } from "../../services/fakeMovieService";
+import Pagination from "../pagination";
+import Paginate from "../../common/paginate";
+import ListGroup from "../../common/listGroup";
+import { getGenres } from "../../services/fakeGenreService";
+import TableMovies from "../tableMovies";
 // import lodash
 import _ from "lodash";
 //import context
-import LikeContext from "../context/likecontext";
+import LikeContext from "../../context/likecontext";
 
 class Movies extends Component {
   state = {

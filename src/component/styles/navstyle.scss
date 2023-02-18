@@ -1,0 +1,48 @@
+@import "variables" ; 
+.header{
+    font-family: $poppins;
+    background: $primary-color;
+    color : $light;
+    width : 100% ;
+    position:relative;
+    display : flex ;
+    justify-content: start;
+    flex-direction: row;
+    align-items: center;
+    padding : 0 1.5rem;
+    height: 8vh;
+
+    .logo{
+        font-weight: 700;
+        font-size:28px ;   
+        min-width: fit-content;
+    }
+    .nav-wrap{
+        display: flex;
+        list-style-type: none;
+        flex-direction: row;
+        margin: auto 4rem;
+        >li{
+            padding-right: 2rem;
+            >a{
+                color : $light;
+                text-decoration: none;
+                font-weight: 500;
+                cursor: pointer;
+                &:hover{
+                   color: darkblue;   
+                }
+            }
+        }
+    }
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
