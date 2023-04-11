@@ -9,6 +9,7 @@ import TableMovies from "../tableMovies";
 import _ from "lodash";
 //import context
 import LikeContext from "../../context/likecontext";
+import SearchBar from "../searchBar";
 
 class Movies extends Component {
   state = {
@@ -17,6 +18,7 @@ class Movies extends Component {
     pageSize: 4,
     currentPage: 1,
     selectedgenre: "",
+    searchQuery: "",
     sorttype: { path: "title", order: "asc" },
   };
 
@@ -28,19 +30,34 @@ class Movies extends Component {
   }
 
   getPageData = () => {
-    const { movies, currentPage, pageSize, selectedgenre, sorttype } =
-      this.state;
-    let filtered =
-      selectedgenre && selectedgenre._id
-        ? movies.filter((m) => m.genre._id === selectedgenre._id)
-        : movies;
+    const {
+      movies,
+      currentPage,
+      pageSize,
+      selectedgenre,
+      searchQuery,
+      sorttype,
+    } = this.state;
+    let filtered = movies;
+    if (searchQuery)
+      filtered = movies.filter((m) =>
+        m.title.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+    else if (selectedgenre && selectedgenre._id)
+      filtered = movies.filter((m) => m.genre._id === selectedgenre._id);
+
+    // let filtered =
+    //   selectedgenre && selectedgenre._id
+    //     ? movies.filter((m) => m.genre._id === selectedgenre._id)
+    //     : movies;
     let sorted = _.orderBy(filtered, [sorttype.path], [sorttype.order]);
     let filtermovies = Paginate(sorted, currentPage, pageSize);
     return { totalcount: filtered.length, filtermovies };
   };
 
   render() {
-    const { currentPage, pageSize, genres, selectedgenre } = this.state;
+    const { currentPage, pageSize, genres, selectedgenre, searchQuery } =
+      this.state;
 
     const { totalcount, filtermovies } = this.getPageData();
     return (
@@ -60,7 +77,10 @@ class Movies extends Component {
           </div>
           <div className="col container">
             <div className="show m-3">
-              {`Showing ${totalcount} movies in the database`}
+              {`Showing ${totalcount} movies in the database  🍌`}
+            </div>
+            <div className="searchBar m-3" style={{ width: "20%" }}>
+              <SearchBar value={searchQuery} onChange={this.handleSearch} />
             </div>
             <TableMovies
               filtermovies={filtermovies}
@@ -72,7 +92,7 @@ class Movies extends Component {
               movies={totalcount}
               pageSize={pageSize}
               currentPage={currentPage}
-              onChangeHandler={this.onChangeHandler}
+              onChangePage={this.onChangePage}
               prevPage={this.prevPage}
               nextPage={this.nextPage}
             />
@@ -82,11 +102,16 @@ class Movies extends Component {
     );
   }
 
+  handleSearch = (query) => {
+    console.log(query);
+    this.setState({ searchQuery: query, selectedgenre: "", currentPage: 1 });
+  };
+
   removelist = (movie) => {
     let itemlist = this.state.movies.filter((item) => item._id !== movie._id);
     return this.setState({ movies: itemlist });
   };
-  onChangeHandler = (item) => {
+  onChangePage = (item) => {
     this.setState({ currentPage: item });
     // const { pageSize } = this.state;
     // let part1 = (item - 1) * pageSize;
@@ -107,7 +132,7 @@ class Movies extends Component {
     this.setState({ currentPage: this.state.currentPage + 1 });
   };
   filtergenre = (genre) => {
-    this.setState({ selectedgenre: genre, currentPage: 1 });
+    this.setState({ selectedgenre: genre, searchQuery: "", currentPage: 1 });
   };
   onLikeHandler = () => {
     console.log(this.state.movies.like);

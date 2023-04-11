@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import _ from "lodash";
 function Pagination(props) {
@@ -27,7 +28,7 @@ function Pagination(props) {
           >
             <a
               role="button"
-              onClick={() => props.onChangeHandler(item)}
+              onClick={() => props.onChangePage(item)}
               className="page-link pe-auto"
             >
               {item}

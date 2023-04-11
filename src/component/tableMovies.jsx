@@ -21,7 +21,7 @@ function TableMovies(props) {
     },
   ];
   return (
-    <table className="table">
+    <table style={{width:"70%"}} className="table ">
       <TableHeader columns={columns} sortType={sortType} onSort={onSort} />
       <TableBody filtermovies={filtermovies} columns={columns} />
       {/* <tbody>

@@ -76,6 +76,7 @@
       justify-content: center;
       align-items: center;
       .form-group1{
+        max-width: 253px;
         display:flex;
         flex-direction: column;
         justify-content: center;
@@ -88,11 +89,13 @@
           line-height: 30px;
           &:focus{
             overflow: visible;
+           
           }
         
         }
       }
       .form-group2{
+        max-width: 253px;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -107,7 +110,7 @@
         }
         .btn-show{
           position: absolute;
-          right: 80px;
+          right: 47px;
           color: $dark;
         }
       }
@@ -137,5 +140,14 @@
         }
       }
     }
+  }
+  .errorbox{
+   display: flex ;
+   flex-direction: column;  
+   position: absolute;
+   width: 300px;
+   bottom : 5px ;
+   right : 10px
+    
   }
 }
